@@ -16,27 +16,41 @@ defmodule FibonacciSum do
                            end)
   end
 
+  @spec solution(integer) :: integer
   def solution(last_number) when is_correct_number(last_number) do
-    fi = (1 + :math.sqrt(5)) / 2
-    n = element_number(last_number, fi) |> next_fib_element
-    sum_all_elem = sum_fib_elements(fi, n)
-    sum_all_elem / 2 |> trunc
+    last_number
+      |> element_number
+      |> next_fib_element
+      |> sum_fib_elements
+      |> even_only
   end
 
-  def element_number(last_number, fi) when is_correct_number(last_number) and is_float(fi) do
+  @spec element_number(integer) :: integer
+  def element_number(last_number) when is_correct_number(last_number) do
     :math.log(last_number * :math.sqrt(5) + 0.5) / :math.log(fi) |> trunc
   end
 
-  def sum_fib_elements(fi, n) when is_float(fi) and is_integer(n) do
+  @spec sum_fib_elements(integer) :: integer
+  def sum_fib_elements(n) when is_integer(n) do
     s_element = (:math.pow(fi, n) - (-:math.pow(fi, -n))) / (2 * fi - 1) |> round
     s_element - 1
   end
 
+  @spec next_fib_element(integer) :: integer
   defp next_fib_element(n) do
     case rem(n, 3) do
       2 -> n
       1 -> n + 1
       0 -> n + 2
     end
+  end
+
+  @spec even_only(integer) :: integer
+  defp even_only(elements_sum) do
+    elements_sum / 2 |> trunc
+  end
+
+  defp fi do
+    (1 + :math.sqrt(5)) / 2
   end
 end

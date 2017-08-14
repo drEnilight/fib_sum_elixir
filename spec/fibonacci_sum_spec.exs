@@ -8,17 +8,15 @@ defmodule FibonacciSumSpec do
   end
 
   describe "has correct fibonacci sequence number" do
-    before do: {:shared, fi: ((1 + :math.sqrt(5)) / 2)}
-    it do: expect(FibonacciSum.element_number(5, shared.fi)) |> to(eq 5)
-    it do: expect(FibonacciSum.element_number(25, shared.fi)) |> to(eq 8)
-    it do: expect(FibonacciSum.element_number(55, shared.fi)) |> to(eq 10)
+    it do: expect(FibonacciSum.element_number(5)) |> to(eq 5)
+    it do: expect(FibonacciSum.element_number(25)) |> to(eq 8)
+    it do: expect(FibonacciSum.element_number(55)) |> to(eq 10)
   end
 
   describe "has the correct sum of fibonacci elements" do
-    before do: {:shared, fi: ((1 + :math.sqrt(5)) / 2)}
-    it do: expect(FibonacciSum.sum_fib_elements(shared.fi, 6)) |> to(eq 7)
-    it do: expect(FibonacciSum.sum_fib_elements(shared.fi, 8)) |> to(eq 20)
-    it do: expect(FibonacciSum.sum_fib_elements(shared.fi, 10)) |> to(eq 54)
+    it do: expect(FibonacciSum.sum_fib_elements(6)) |> to(eq 7)
+    it do: expect(FibonacciSum.sum_fib_elements(8)) |> to(eq 20)
+    it do: expect(FibonacciSum.sum_fib_elements(10)) |> to(eq 54)
   end
 
   describe "get exception" do
