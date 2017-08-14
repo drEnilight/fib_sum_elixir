@@ -16,6 +16,7 @@ defmodule FibonacciSum.Mixfile do
   end
 
   defp deps do
-    [{:espec, "~> 1.4.5", only: :test}]
+    [{:espec, "~> 1.4.5", only: :test},
+     {:benchfella, "~> 0.3.0"}]
   end
 end
